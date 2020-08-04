@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 public class Window : MonoBehaviour, IDropHandler
 {
     private TextMeshProUGUI _windowText;
+
+    [SerializeField]
+    private CheckAnswer checkAnswer;
     private void Awake()
     {
         _windowText = gameObject.GetComponentInChildren<TextMeshProUGUI>();
@@ -18,5 +21,8 @@ public class Window : MonoBehaviour, IDropHandler
         _windowText.text = cloud.GetComponentInChildren<TextMeshProUGUI>().text;
         cloud.GetComponent<CanvasGroup>().alpha = 0.6f;
         cloud.GetComponent<CloudDragHandler>().Dragged = true;
+        
+        checkAnswer.CheckCorrect();
+        
     }
 }
