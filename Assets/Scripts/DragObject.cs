@@ -17,7 +17,7 @@ public class DragObject : MonoBehaviour, IDragHandler, IEndDragHandler
     private Tween _returnTween, _pasteTween;
     private Sequence _pasteSequence;
 
-     private void Start()
+    private void Start()
     {
         TakeProperties();
     }
