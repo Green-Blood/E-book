@@ -14,12 +14,9 @@ public class Window : MonoBehaviour, IDropHandler
     {
         var cloud = eventData.pointerDrag;
         
-        
-        if (cloud != null && !cloud.GetComponent<CloudDragHandler>().Dragged)
-        {
-            _windowText.text = cloud.GetComponentInChildren<TextMeshProUGUI>().text;
-            cloud.GetComponent<CanvasGroup>().alpha = 0.6f;
-            cloud.GetComponent<CloudDragHandler>().Dragged = true;
-        }
+        if (cloud == null || cloud.GetComponent<CloudDragHandler>().Dragged) return;
+        _windowText.text = cloud.GetComponentInChildren<TextMeshProUGUI>().text;
+        cloud.GetComponent<CanvasGroup>().alpha = 0.6f;
+        cloud.GetComponent<CloudDragHandler>().Dragged = true;
     }
 }

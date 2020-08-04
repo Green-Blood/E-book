@@ -18,6 +18,7 @@ public class CheckAnswer : MonoBehaviour
     private TextMeshProUGUI _sixthWindow;
     private int _answer;
     
+    // Hope this shit will be changed
     private void Start()
     {
         /*for (int i = 0; i < windows.Length; i++)

@@ -35,6 +35,7 @@ public class CloudDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         StartCoroutine(Scale());
     }
 
+    
     private IEnumerator Scale()
     {
         gameObject.transform.DOScale(0, 0.5f);
