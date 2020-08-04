@@ -1298,7 +1298,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da54eb6e812b55649875e29c4f5280f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windows: []
+  firstLine: {fileID: 378700364}
+  secondLine: {fileID: 912518065}
+  thirdLine: {fileID: 532757664}
+  gate: {fileID: 8620601651793525034}
 --- !u!4 &866104366
 Transform:
   m_ObjectHideFlags: 0
