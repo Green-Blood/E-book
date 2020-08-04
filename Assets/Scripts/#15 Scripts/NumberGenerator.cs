@@ -14,7 +14,7 @@ public class NumberGenerator : MonoBehaviour
     private bool listCreated = false;
 
     private int[] _options = new int[9];
-    private int[] _terms = new int[8];
+    private int[] _terms = new int[9];
     
     
     [Header("Parameters")]
@@ -35,6 +35,7 @@ public class NumberGenerator : MonoBehaviour
             _terms[i] = GetUniqueRandom(1, numberToGenerate);
             _terms[i+1] = numberToGenerate - _terms[i];
         }
+        _terms[8] = GetUniqueRandom(1, numberToGenerate);
 
         CreateRandomList(1, 9);
         for (int i = 0; i < 9; i++)
