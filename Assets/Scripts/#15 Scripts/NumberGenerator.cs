@@ -42,13 +42,13 @@ public class NumberGenerator : MonoBehaviour
             _options[GetUniqueRandom(0, 9)] = _terms[i];
         }
 
-        foreach (var cloud in clouds)
+        for (int i = 0; i < clouds.Length; i++)
         {
-            cloud.GetComponentInChildren<TextMeshProUGUI>().text = Random.Range(1, number).ToString();
+            clouds[i].GetComponentInChildren<TextMeshProUGUI>().text = _options[i].ToString();
         }
     }
 
-    public void CreateRandomList(int min, int max)
+    private void CreateRandomList(int min, int max)
     {
         uniqueNumbers.Clear();
 
@@ -57,7 +57,8 @@ public class NumberGenerator : MonoBehaviour
             uniqueNumbers.Add(i);
         }
     }
-    public int GetUniqueRandom(int min, int max)
+
+    private int GetUniqueRandom(int min, int max)
     {
         int randNum = 0;
 
