@@ -7,7 +7,6 @@ public class NumberGenerator : MonoBehaviour
 
     [Header("UI Objects")] 
     [SerializeField] private GameObject gate;
-
     [SerializeField] private GameObject[] clouds;
     
     
@@ -27,7 +26,4 @@ public class NumberGenerator : MonoBehaviour
             cloud.GetComponentInChildren<TextMeshProUGUI>().text = Random.Range(1, number).ToString();
         }
     }
-
-    
-    
 }
