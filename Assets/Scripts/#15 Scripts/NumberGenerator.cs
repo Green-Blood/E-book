@@ -27,6 +27,7 @@ public class NumberGenerator : MonoBehaviour
         gate.GetComponentInChildren<TextMeshProUGUI>().text = numberToGenerate.ToString();
     }
 
+    // Kakoyto vashe shit Asmovskiy 
     private void GenerateNumber(int number)
     {
         CreateRandomList(1, numberToGenerate);
