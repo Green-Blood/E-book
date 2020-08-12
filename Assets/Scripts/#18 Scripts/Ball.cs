@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
@@ -15,7 +13,7 @@ public class Ball : MonoBehaviour
         _correctBallText = StadiumManager.Instance.correctBall.GetComponentInChildren<TextMeshProUGUI>().text;
         if (_ballText == _correctBallText)
         {
-            Debug.Log("EndGame");
+            gameObject.transform.DOPunchScale(new Vector3 (1, 1, 1), 0.5f);
         }
     }
 }
