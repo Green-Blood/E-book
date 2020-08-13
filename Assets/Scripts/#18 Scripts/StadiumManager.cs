@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using DG.Tweening;
 using FiguresDraw;
 using TMPro;
 using UnityEngine;
@@ -72,6 +75,20 @@ public class StadiumManager : SingletonClass<StadiumManager>
 
         correctBall = balls[Random.Range(0, balls.Length)];
         correctBall.GetComponentInChildren<TextMeshProUGUI>().text = answer.ToString("F0");
+    }
+
+    public IEnumerator ShowBalls()
+    {
+        WaitForSeconds wait = new WaitForSeconds( 1f ) ;
+        // Shows balls;
+        ballsBackground.transform.DOMoveY(0, fillTime);
+        yield return wait;
+            
+        foreach (var ball in balls)
+        {
+            ball.transform.DOScale(0.80f, 0.25f);
+            yield return wait;
+        }
     }
 
    

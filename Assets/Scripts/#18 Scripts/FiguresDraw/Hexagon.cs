@@ -50,15 +50,9 @@ namespace FiguresDraw
                 yield return wait;
             }
 
-            // Shows balls;
-            manager.ballsBackground.transform.DOMoveY(0, manager.fillTime);
-            yield return wait;
-            
-            foreach (var ball in manager.balls)
-            {
-                ball.transform.DOScale(0.85f, 0.25f);
-                yield return wait;
-            }
+            StartCoroutine(manager.ShowBalls());
+
+
         }
     }
 }
