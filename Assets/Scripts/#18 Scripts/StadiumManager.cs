@@ -65,6 +65,7 @@ public class StadiumManager : SingletonClass<StadiumManager>
         }
     }
     
+    // Function to Draw Balls 
     public void DrawBalls(float answer)
     {
         for (int i = 0; i < balls.Length; i++)
@@ -77,6 +78,7 @@ public class StadiumManager : SingletonClass<StadiumManager>
         correctBall.GetComponentInChildren<TextMeshProUGUI>().text = answer.ToString("F0");
     }
 
+    // Coroutine to show Balls 
     public IEnumerator ShowBalls()
     {
         WaitForSeconds wait = new WaitForSeconds( 1f ) ;
