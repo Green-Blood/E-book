@@ -5,8 +5,12 @@ using UnityEngine.EventSystems;
 
 public class CloudDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    [SerializeField] private Canvas canvas;
+    
     private Vector3 _startPosition;
     private CanvasGroup _canvasGroup;
+
+    
     // Checks if cloud was already dragged or not 
     public bool Dragged { get; set; }
     
@@ -24,7 +28,13 @@ public class CloudDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, 
     }
 
     public void OnDrag(PointerEventData eventData)
-    { transform.position = eventData.position; }
+    {
+        // Convert eventData position to canvas rt position
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, canvas.worldCamera, 
+            out var pos);
+        transform.position = canvas.transform.TransformPoint(pos);
+        
+    }
 
     
     public void OnEndDrag(PointerEventData eventData)
@@ -43,7 +53,7 @@ public class CloudDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         yield return wait;
         
         // Scales up in 0.5 sec in the start position
-        gameObject.transform.DOScale(1, 0.5f);
+        gameObject.transform.DOScale(1.5f, 0.5f);
         transform.position = _startPosition;
         
     }

@@ -9,6 +9,7 @@ public class GameSceneManager : SingletonClass<GameSceneManager>
 
     public void ChangeScene()
     {
+        StartCoroutine(fadeScript.Fade());
         SceneManager.LoadScene(sceneName);
     }
 
