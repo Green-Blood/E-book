@@ -5,6 +5,7 @@ using DG.Tweening;
 using FiguresDraw;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class StadiumManager : SingletonClass<StadiumManager>
@@ -93,7 +94,7 @@ public class StadiumManager : SingletonClass<StadiumManager>
         }
     }
 
-   
+    
 
 
 }

@@ -4,12 +4,11 @@ using UnityEngine.EventSystems;
 
 public class Window : MonoBehaviour, IDropHandler
 {
+    [SerializeField] private CheckAnswer checkAnswer;
+
     private TextMeshProUGUI _windowText;
-
-    [SerializeField]
-    private CheckAnswer checkAnswer;
-
     private GameObject _oldCloud;
+
     private void Awake()
     {
         _windowText = gameObject.GetComponentInChildren<TextMeshProUGUI>();
@@ -18,7 +17,7 @@ public class Window : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         var cloud = eventData.pointerDrag;
-
+        
         // If old cloud exists, and it is different, change cloud  
         if (_windowText.text != "" && _windowText.text != cloud.GetComponentInChildren<TextMeshProUGUI>().text)
         {
@@ -36,9 +35,13 @@ public class Window : MonoBehaviour, IDropHandler
             cloud.GetComponent<CloudDragHandler>().Dragged = true;
             _oldCloud = cloud;
         }
-        
-        // Checks if the answered clouds are correct
-        checkAnswer.CheckCorrect();
+        // If text is not empty, check for a correct answer.
+        if (_windowText.text != "")
+        {
+            // Checks if the answered clouds are correct
+            checkAnswer.CheckCorrect();
+        }
+ 
     }
     
 }

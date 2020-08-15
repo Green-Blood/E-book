@@ -24,26 +24,27 @@ public class CloudDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, 
     }
 
     public void OnDrag(PointerEventData eventData)
-    {
-        transform.position = eventData.position;
-    }
+    { transform.position = eventData.position; }
 
     
     public void OnEndDrag(PointerEventData eventData)
     {
         _canvasGroup.blocksRaycasts = true;
-        StartCoroutine(Scale());
+        StartCoroutine(ScaleCloud());
     }
 
     
-    private IEnumerator Scale()
+    private IEnumerator ScaleCloud()
     {
-        // Scales down in 1 second
+        var wait = new WaitForSeconds( 1f ) ;
+        
+        // Scales down in 0.5 second, and wait for 1 sec
         gameObject.transform.DOScale(0, 0.5f);
-        yield return new WaitForSeconds(1f);
-        // Scales up in 1 sec
-        yield return  new WaitForSeconds(1f);
+        yield return wait;
+        
+        // Scales up in 0.5 sec in the start position
         gameObject.transform.DOScale(1, 0.5f);
         transform.position = _startPosition;
+        
     }
 }
