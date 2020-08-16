@@ -34,8 +34,11 @@ public class Ball : MonoBehaviour
         yield return wait;
         
         _button.interactable = false;
-        GameSceneManager.Instance.ChangeScene();
+        // Uncomment to change Scene
+        //GameSceneManager.Instance.ChangeScene();
         
+        // Comment to change Reset
+        GameSceneManager.Instance.ResetGame();
        
     }
 }
