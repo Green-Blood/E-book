@@ -23,6 +23,7 @@ public class NumberGenerator : MonoBehaviour
     public void Start()
     {
         uniqueNumbers = new List<int>();
+        numberToGenerate = Random.Range(10, 25);
         GenerateNumber(numberToGenerate);
         gate.GetComponentInChildren<TextMeshProUGUI>().text = numberToGenerate.ToString();
     }
