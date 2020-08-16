@@ -25,4 +25,9 @@ public class GameSceneManager : SingletonClass<GameSceneManager>
         SceneManager.LoadScene(sceneName);
     }
 
+    public void ShowGameOver()
+    {
+        StartCoroutine(fadeScript.GameOver());
+    }
+
 }

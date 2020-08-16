@@ -38,7 +38,7 @@ public class Ball : MonoBehaviour
         //GameSceneManager.Instance.ChangeScene();
         
         // Comment to change Reset
-        GameSceneManager.Instance.ResetGame();
+        GameSceneManager.Instance.ShowGameOver();
        
     }
 }

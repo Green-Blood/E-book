@@ -25,16 +25,21 @@ public class StadiumManager : SingletonClass<StadiumManager>
     [SerializeField] private float randomRange;
     // Can be changed in future
     public int[] figureValues;
+    [SerializeField] private int figureValuesRandomRange;
     public GameObject correctBall;
 
     private TextMeshProUGUI[] _tagText;
     private IFigures _currentFigure;
-     
+
+    
 
     private void Start()
     {
-        
         // Create figures dependent on Enum
+
+        RandomizeFigures();
+        RandomizeValues();
+
         switch (figuresEnum)
         {
             case Figures.FiguresEnum.Square:
@@ -92,6 +97,19 @@ public class StadiumManager : SingletonClass<StadiumManager>
             ball.transform.DOScale(0.80f, 0.25f);
             yield return wait;
         }
+    }
+    private void RandomizeValues()
+    {
+        // Hope will be changed
+        figureValues[0] = Random.Range(1, figureValuesRandomRange);
+        figureValues[1] = Random.Range(figureValues[0] + 1, figureValuesRandomRange);
+        figureValues[2] = Random.Range(figureValues[1] + 2, figureValuesRandomRange);
+    }
+
+    private void RandomizeFigures()
+    {
+        var values = Enum.GetValues(typeof(Figures.FiguresEnum));
+        figuresEnum = (Figures.FiguresEnum) Random.Range(0, values.Length);
     }
 
     
