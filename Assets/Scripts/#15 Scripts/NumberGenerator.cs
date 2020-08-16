@@ -15,8 +15,7 @@ public class NumberGenerator : MonoBehaviour
 
     private int[] _options = new int[9];
     private int[] _terms = new int[9];
-    
-    
+
     [Header("Parameters")]
     [SerializeField] private int numberToGenerate;
     
@@ -26,6 +25,15 @@ public class NumberGenerator : MonoBehaviour
         numberToGenerate = Random.Range(10, 25);
         GenerateNumber(numberToGenerate);
         gate.GetComponentInChildren<TextMeshProUGUI>().text = numberToGenerate.ToString();
+    }
+
+    public void ResetClouds( )
+    {
+        for (int i = 0; i < clouds.Length; i++)
+        {
+            clouds[i].GetComponent<CloudDragHandler>().ClearCloud();
+        }
+        
     }
 
     // Kakoyto vashe shit Asmovskiy 
@@ -50,7 +58,6 @@ public class NumberGenerator : MonoBehaviour
             clouds[i].GetComponentInChildren<TextMeshProUGUI>().text = _options[i].ToString();
         }
     }
-
     private void CreateRandomList(int min, int max)
     {
         uniqueNumbers.Clear();
@@ -60,7 +67,6 @@ public class NumberGenerator : MonoBehaviour
             uniqueNumbers.Add(i);
         }
     }
-
     private int GetUniqueRandom(int min, int max)
     {
         int randNum = 0;

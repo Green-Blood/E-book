@@ -33,7 +33,6 @@ public class CloudDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, canvas.worldCamera, 
             out var pos);
         transform.position = canvas.transform.TransformPoint(pos);
-        
     }
 
     
@@ -42,7 +41,12 @@ public class CloudDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         _canvasGroup.blocksRaycasts = true;
         StartCoroutine(ScaleCloud());
     }
-
+    public void ClearCloud()
+    {
+        _canvasGroup.blocksRaycasts = true;
+        Dragged = false;
+        _canvasGroup.alpha = 1f;
+    }
     
     private IEnumerator ScaleCloud()
     {
@@ -57,4 +61,6 @@ public class CloudDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         transform.position = _startPosition;
         
     }
+
+    
 }

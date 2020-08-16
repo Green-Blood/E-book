@@ -6,51 +6,62 @@ public class CheckAnswer : MonoBehaviour
      
     [SerializeField] private GameObject gate;
     [SerializeField] private TextMeshProUGUI[] windowsText;
-    [SerializeField] private int correctAnswersLeft;
-    
+    [SerializeField] private NumberGenerator numberGenerator;
+
     private int _answer;
-    private void Awake()
+    private void Start()
     {
         _answer = int.Parse(gate.GetComponentInChildren<TextMeshProUGUI>().text);
+         
     }
 
-    public void CheckCorrect()
+    public bool CheckCorrect(int correctAnswersLeft)
     {
         var correctAnswers = 0;
-        var answerCount = 0;
 
         // Checks first window with second, if correct updates. 
-        if (!CorrectText(windowsText[0].text, windowsText[1].text)) {
+        if (!CorrectText(windowsText[0].text, windowsText[1].text)) 
+        {
+            
             if (IsAnswerCorrect(windowsText[0].text, windowsText[1].text))
-                correctAnswers++; 
-            answerCount++;
+            {
+                correctAnswers++;
+            }
+            else
+            {
+                numberGenerator.ResetClouds();
+                windowsText[0].text = ""; windowsText[1].text = "";
+            }
         }
 
         if (!CorrectText(windowsText[2].text, windowsText[3].text))
         {
             if (IsAnswerCorrect(windowsText[2].text, windowsText[3].text)) 
-                correctAnswers++; 
-            answerCount++;
+            {
+                correctAnswers++;
+            }
+            else
+            {
+                numberGenerator.ResetClouds();
+                windowsText[2].text = ""; windowsText[3].text = "";
+            }
         }
         
         if (!CorrectText(windowsText[4].text, windowsText[5].text))
         {
             if (IsAnswerCorrect(windowsText[4].text, windowsText[5].text))
-                correctAnswers++;  
-            answerCount++;
-        }
-        
-        if (correctAnswers >= correctAnswersLeft)
-        {
-            // Here Should be the end of the game
-            GameSceneManager.Instance.WinGame();
-        }
-        else if(answerCount >= 3)
-        {
-            GameSceneManager.Instance.ResetGame();
+            {
+                correctAnswers++;
+            }
+            else
+            {
+                numberGenerator.ResetClouds();
+                windowsText[4].text = ""; windowsText[5].text = "";
+            } 
+
         }
 
-         
+        return correctAnswers >= correctAnswersLeft;
     }
     
     // Check for correct Text provided

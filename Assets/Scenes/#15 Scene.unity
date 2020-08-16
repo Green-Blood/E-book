@@ -1570,6 +1570,7 @@ MonoBehaviour:
   - {fileID: 42029268}
   - {fileID: 340532079}
   - {fileID: 1820886995}
+  numberGenerator: {fileID: 380806745}
   correctAnswersLeft: 3
 --- !u!4 &866104366
 Transform:

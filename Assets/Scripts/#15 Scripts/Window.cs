@@ -24,24 +24,30 @@ public class Window : MonoBehaviour, IDropHandler
             _oldCloud.GetComponent<CanvasGroup>().alpha = 1f;
             _oldCloud.GetComponent<CloudDragHandler>().Dragged = false;
             _windowText.text = cloud.GetComponentInChildren<TextMeshProUGUI>().text;
-            cloud.GetComponent<CanvasGroup>().alpha = 0.6f;
-            cloud.GetComponent<CloudDragHandler>().Dragged = true;
+            DisableCloud(cloud);
+            
         }
         // if old cloud is not different
         else if (cloud != null && !cloud.GetComponent<CloudDragHandler>().Dragged)
         {
             _windowText.text = cloud.GetComponentInChildren<TextMeshProUGUI>().text;
-            cloud.GetComponent<CanvasGroup>().alpha = 0.6f;
-            cloud.GetComponent<CloudDragHandler>().Dragged = true;
+            DisableCloud(cloud);
             _oldCloud = cloud;
         }
         // If text is not empty, check for a correct answer.
-        if (_windowText.text != "")
+        if (_windowText.text == "") return;
+        // Checks if the answered clouds are correct
+        if (checkAnswer.CheckCorrect(3))
         {
-            // Checks if the answered clouds are correct
-            checkAnswer.CheckCorrect();
+            GameSceneManager.Instance.ResetGame();
         }
- 
+
+    }
+
+    private void DisableCloud(GameObject cloud)
+    {
+        cloud.GetComponent<CanvasGroup>().alpha = 0.6f;
+        cloud.GetComponent<CloudDragHandler>().Dragged = true;
     }
     
 }
