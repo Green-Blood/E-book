@@ -7,6 +7,6 @@ public class CameraScript : MonoBehaviour
 {
     public void MoveCamera(Vector3 coinPosition, float moveTime)
     {
-        if (coinPosition.y > transform.position.y) transform.DOMoveY(coinPosition.y, moveTime);
+        if (coinPosition.y > transform.position.y) transform.DOMoveY(coinPosition.y+1.5f, moveTime);
     }
 }
