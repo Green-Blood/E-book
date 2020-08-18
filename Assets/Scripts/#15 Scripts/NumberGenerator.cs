@@ -36,7 +36,6 @@ public class NumberGenerator : MonoBehaviour
         
     }
 
-    // Kakoyto vashe shit Asmovskiy 
     private void GenerateNumber(int number)
     {
         CreateRandomList(1, numberToGenerate);
